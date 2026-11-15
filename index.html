@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lasya Reddy – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#e11b28;--ink:#231f20;--silver:#e4e6ea;--white:#fff;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;background:var(--red)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--red);color:var(--white);font:400 17px/1.65 "Archivo",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,.proj:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--white);z-index:20}
+nav{position:sticky;top:0;z-index:10;padding:calc(10px + env(safe-area-inset-top,0px)) 20px 10px;background:#e11b28ee;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+nav ul{display:flex;gap:8px;margin:0 auto;max-width:900px;padding:0;list-style:none;overflow-x:auto}
+nav a{display:block;padding:4px 16px;border:2px solid var(--white);border-radius:999px;font-weight:700;font-size:.9rem;white-space:nowrap;transition:background .25s,color .25s}
+nav a:hover,nav a.on{background:var(--white);color:var(--red)}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 96px}
+
+.hero{position:relative;padding:48px 0 40px;min-height:78vh;display:flex;flex-direction:column;justify-content:center}
+.ring{position:absolute;right:-6vmin;top:50%;width:min(62vw,440px);aspect-ratio:1;margin-top:calc(min(62vw,440px) / -2);border-radius:50%;background:var(--white);animation:float 8s ease-in-out infinite alternate}
+@keyframes float{to{transform:translate(-14px,16px) scale(1.04)}}
+.big{position:absolute;left:-1vw;top:0;margin:0;font-weight:900;font-size:clamp(8rem,38vw,22rem);line-height:.78;letter-spacing:-.04em;color:var(--white);user-select:none}
+.big.o{top:auto;bottom:-6vw;color:transparent;-webkit-text-stroke:3px var(--white)}
+h1{position:relative;z-index:2;margin:0;font-weight:900;font-size:clamp(3.2rem,13vw,7rem);line-height:.92;letter-spacing:-.03em;text-transform:uppercase;color:var(--ink)}
+.role{position:relative;z-index:2;margin:22px 0 0;font-size:1.25rem;font-weight:700;color:var(--ink);background:var(--white);display:inline-block;align-self:flex-start;padding:6px 18px;border-radius:999px}
+.role b{color:var(--red)}
+.caret{display:inline-block;width:3px;height:1.1em;background:var(--ink);vertical-align:-4px;margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.links{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;padding:0;list-style:none}
+.links a{display:inline-block;padding:10px 22px;border-radius:999px;font-weight:800;font-size:.95rem;border:2px solid var(--ink);transition:transform .25s}
+.links li:nth-child(1) a{background:var(--ink);color:var(--white)}
+.links li:nth-child(2) a{background:var(--silver);color:var(--ink)}
+.links li:nth-child(n+3) a{background:transparent;color:var(--ink)}
+.links a:hover{transform:translateY(-3px) rotate(-1deg)}
+
+section{margin-top:84px}
+h2{margin:0 0 22px;font-weight:900;font-size:clamp(2.2rem,8vw,3.8rem);line-height:.92;letter-spacing:-.03em;text-transform:uppercase;color:var(--ink)}
+h3{margin:0;font-weight:800;font-size:1.3rem;line-height:1.2}
+.lead{font-size:1.25rem;font-weight:500;max-width:60ch}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filters button{border:2px solid var(--white);background:transparent;color:var(--white);padding:5px 16px;border-radius:999px;font:700 .88rem "Archivo",sans-serif;cursor:pointer;transition:all .2s}
+.filters button.on,.filters button:hover{background:var(--white);color:var(--red)}
+.proj{padding:24px 26px;border-radius:28px;margin-bottom:14px;cursor:pointer;transition:transform .3s,box-shadow .3s;background:var(--white);color:var(--ink)}
+.proj:nth-of-type(even){background:var(--ink);color:var(--white)}
+.proj:hover{transform:translateY(-5px);box-shadow:0 18px 30px -18px rgba(0,0,0,.55)}
+.proj.hide{display:none}
+.proj header{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.proj .when{margin:2px 0 0;font-size:.9rem;opacity:.7}
+.chev{flex:none;font-size:1.3rem;font-weight:800;color:var(--red);transition:transform .3s}
+.proj.open .chev{transform:rotate(180deg)}
+.proj p{margin:10px 0 0}
+.more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.proj.open .more{grid-template-rows:1fr}
+.more>div{overflow:hidden}
+.more ul{margin:10px 0 0;padding-left:18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 0;list-style:none}
+.tags li{font-size:.8rem;font-weight:700;padding:2px 12px;border-radius:999px;background:var(--silver);color:var(--ink)}
+.proj:nth-of-type(even) .tags li{background:#3a3637;color:var(--white)}
+
+.skillgrp{margin:0 0 8px;font-weight:700;opacity:.9}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.chips li{padding:5px 16px;border-radius:999px;border:2px solid var(--white);font-weight:700;font-size:.92rem;transition:all .2s}
+.chips li:hover{background:var(--white);color:var(--red);transform:scale(1.06) rotate(-2deg)}
+
+.card{background:var(--white);color:var(--ink);border-radius:28px;padding:20px 26px;margin-bottom:12px;font-weight:700}
+.card span{display:block;font-weight:400;opacity:.75;font-size:.95rem}
+h2.sub{margin-top:52px}
+ul.plain{margin:0;padding-left:20px;font-weight:500}ul.plain li{margin-bottom:6px}
+footer{margin-top:80px;padding-top:22px;border-top:3px solid var(--white);font-weight:700}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (max-width:560px){.ring{right:-22vw}.big.o{display:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav>
+  <ul id="menu">
+    <li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="ring" aria-hidden="true"></div>
+    <p class="big" aria-hidden="true">AI</p>
+    <p class="big o" aria-hidden="true">ML</p>
+    <h1>Lasya<br>Reddy</h1>
+    <p class="role">I build <b id="typed"></b><span class="caret"></span></p>
+    <ul class="links">
+      <li><a href="https://github.com/lasyaaky" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/lasya-reddy075" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:lasyabruh@gmail.com">lasyabruh@gmail.com</a></li>
+    </ul>
+  </header>
+
+  <section id="about" class="rv">
+    <h2>About</h2>
+    <p class="lead">AIML engineering student and aspiring software developer in Bengaluru. I build NLP applications, REST APIs and AI-driven web projects in Python, and I care about clean architecture, modular code and systems that scale. I’m looking for an internship or entry-level role where I can contribute to innovative solutions.</p>
+  </section>
+
+  <section id="projects" class="rv">
+    <h2>Projects</h2>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All</button><button data-f="ml">Machine learning</button><button data-f="nlp">NLP</button><button data-f="web">Web and APIs</button>
+    </div>
+
+    <article class="proj" data-t="ml" tabindex="0" role="button" aria-expanded="false">
+      <header><div><h3>Supply Chain Delay Predictor</h3></div><span class="chev">⌄</span></header>
+      <p>A machine learning project that predicts delays in supply chain deliveries so they can be spotted before they happen.</p>
+      <div class="more"><div><ul><li>Frames delay detection as a prediction problem on delivery data</li><li>Built in Python with data analysis and model training</li></ul></div></div>
+      <ul class="tags"><li>Python</li><li>Machine learning</li><li>Data analysis</li></ul>
+    </article>
+
+    <article class="proj" data-t="ml" tabindex="0" role="button" aria-expanded="false">
+      <header><div><h3>Gamified Territory-Based Fitness App</h3><p class="when">Feb 2026 – Present</p></div><span class="chev">⌄</span></header>
+      <p>A fitness app that uses location data to get people moving, with territory claiming and rewards.</p>
+      <div class="more"><div><ul><li>Territory claiming, progress tracking and reward mechanics to boost engagement</li><li>GPS data processing, plus machine learning for activity analysis and personalised recommendations</li><li>Focus on user experience, performance and scalable design</li></ul></div></div>
+      <ul class="tags"><li>GPS data</li><li>Machine learning</li><li>System design</li></ul>
+    </article>
+
+    <article class="proj" data-t="nlp web" tabindex="0" role="button" aria-expanded="false">
+      <header><div><h3>POS Tagging and Noun Finder</h3><p class="when">Feb 2026 – Mar 2026</p></div><span class="chev">⌄</span></header>
+      <p>A Python NLP application that tags parts of speech and extracts nouns with spaCy.</p>
+      <div class="more"><div><ul><li>Command-line and web interfaces</li><li>Flask REST API with a frontend that visualises POS tags and highlights nouns</li><li>Clean architecture, modular code and real-time text analysis</li></ul></div></div>
+      <ul class="tags"><li>Python</li><li>spaCy</li><li>Flask</li><li>REST API</li></ul>
+    </article>
+
+    <article class="proj" data-t="ml web" tabindex="0" role="button" aria-expanded="false">
+      <header><div><h3>Classroom Reservation System Using AI</h3><p class="when">Aug 2025 – Dec 2025</p></div><span class="chev">⌄</span></header>
+      <p>An AI-powered system that automates classroom scheduling and makes better use of rooms.</p>
+      <div class="more"><div><ul><li>Real-time booking, conflict detection and allocation based on usage patterns</li><li>Machine learning concepts to improve efficiency and cut manual work</li><li>Collaborated on system design for a scalable, user-friendly interface</li></ul></div></div>
+      <ul class="tags"><li>Machine learning</li><li>Scheduling</li><li>System design</li></ul>
+    </article>
+  </section>
+
+  <section id="skills" class="rv">
+    <h2>Skills</h2>
+    <p class="skillgrp">Languages</p>
+    <ul class="chips"><li>Python</li><li>SQL</li><li>HTML/CSS</li></ul>
+    <p class="skillgrp">AI and ML</p>
+    <ul class="chips"><li>Machine learning</li><li>Model training</li><li>NLP (spaCy)</li></ul>
+    <p class="skillgrp">Data, web and big data</p>
+    <ul class="chips"><li>Data analysis</li><li>Data visualisation</li><li>SQL querying</li><li>Flask</li><li>REST API design</li><li>Hadoop</li><li>HDFS</li></ul>
+  </section>
+
+  <section id="education" class="rv">
+    <h2>Education</h2>
+    <div class="card">Bachelor of Engineering in Artificial Intelligence and Machine Learning<span>T John Institute of Technology, Bengaluru. Expected June 2027</span></div>
+    <div class="card">High School Diploma<span>St Francis De Sales, Bengaluru. March 2023</span></div>
+    <h2 class="sub">Certifications</h2>
+    <ul class="plain"><li>Python 3 Programming Specialization</li><li>Hadoop and HDFS Fundamentals, Cloudera</li><li>IBM Machine Learning Certification</li></ul>
+    <h2 class="sub">Languages</h2>
+    <p class="lead">English, Hindi and Kannada (proficient, C2). Telugu (native).</p>
+  </section>
+
+  <footer>Lasya Reddy · Bengaluru, Karnataka</footer>
+</main>
+
+<script>
+(function(){
+  var words=['NLP applications','machine learning models','REST APIs','AI-driven web apps','supply chain predictors'],wi=0,ci=0,del=false,el=document.getElementById('typed');
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function tick(){
+    var w=words[wi];
+    if(reduce){el.textContent=w;wi=(wi+1)%words.length;return setTimeout(tick,2200)}
+    ci+=del?-1:1;el.textContent=w.slice(0,ci);
+    var d=del?35:75;
+    if(!del&&ci===w.length){del=true;d=1400}
+    else if(del&&ci===0){del=false;wi=(wi+1)%words.length;d=350}
+    setTimeout(tick,d)
+  }
+  tick();
+
+  var bar=document.getElementById('bar'),links=[].slice.call(document.querySelectorAll('#menu a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.width=(h>0?scrollY/h*100:0)+'%';
+    var cur=-1;secs.forEach(function(s,i){if(s.getBoundingClientRect().top<innerHeight*.4)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)})
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+
+  var projs=[].slice.call(document.querySelectorAll('.proj'));
+  projs.forEach(function(p){
+    function toggle(){var o=p.classList.toggle('open');p.setAttribute('aria-expanded',o)}
+    p.addEventListener('click',toggle);
+    p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}})
+  });
+  document.getElementById('filters').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    this.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+    projs.forEach(function(p){p.classList.toggle('hide',b.dataset.f!=='all'&&p.dataset.t.split(' ').indexOf(b.dataset.f)<0)})
+  });
+})();
+</script>
+</body>
+</html>
